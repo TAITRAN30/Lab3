@@ -1,0 +1,56 @@
+public class toado {
+    private float x;
+    private float y;
+    public toado() {
+        this.x = 0;
+        this.y = 0;
+    }
+    public toado(float x, float y) {
+        this.x = x;
+        this.y = y;
+    }
+    public void nhaptoado() {
+        Scanner kb = new Scanner(System.in);
+        System.out.print("nhap hoanh do x: ");
+        this.x = kb.nextFloat();
+        System.out.print("nhap tung do y: ");
+        this.y = kb.nextFloat();
+    }
+    public void intoado() {
+        System.out.println("(" + x + ", " + y + ")");
+    }
+    public toado cong(toado td) {
+        return new toado(this.x + td.x, this.y + td.y);
+    }
+    public ToaDo doixungquanhtruchoanh() {
+        return new toado(this.x, -this.y);
+    }
+    public float getx() {
+        return x;
+    }
+    public float gety() {
+        return y;
+    }  
+}
+public class main {
+    public static void main(String[] args) {
+        toado d1 = new toado();
+        System.out.println("toa do d1 khoi tao mac dinh ");
+        d1.intoado();
+        toado d2 = new toado(3, 4);
+        System.out.println("toa do d2 khoi tao co tham so : ");
+        d2.intoado();
+        System.out.println("nhap toa do d2: ");
+        d2.nhaptoado();
+        System.out.println("toa do d1: ");
+        d1.intoado();
+        System.out.println("toa do d2: ");
+        d2.intoado();
+        toado d3 = d1.cong(d2);
+        System.out.println("toa do d3 = d1 + d2: ");
+        d3.intoado();
+        toado d4 = d2.doixungquanhtruchoanh();
+        System.out.println("toa do d4 = doixungquanhtruchoanh cua d2: ");
+        d4.intoado();
+    }
+}

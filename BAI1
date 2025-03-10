@@ -1,0 +1,119 @@
+public class hocsinh {
+    private String maso;
+    private String hoten;
+    private double diemtrungbinh;
+    public hocsinh() {
+        this.maso = "";
+        this.hoten = "";
+        this.diemtrungbinh = 0;
+    }
+    public hocsinh(String maso, String hoten, double diemtrungbinh) {
+        this.maso = maso;
+        this.hoten = hoten;
+        this.diemtrungbinh = diemtrungbinh;
+    }
+    public hocsinh(hocsinh hs) {
+        this.maso = hs.maso;
+        this.hoten = hs.hoten;
+        this.diemtrungbinh = hs.diemtrungbinh;
+    }
+    public String getmaso() {
+        return maso;
+    }
+    public void setmaso(String maso) {
+        this.maso = maso;
+    }
+    public String gethoten() {
+        return hoten;
+    }
+    public void sethoten(String hoten) {
+        this.hoten = hoten;
+    }
+    public double getdiemtrungbinh() {
+        return diemtrungbinh;
+    }
+    public void setdiemtrungbinh(double diemtrungbinh) {
+        this.diemtrungbinh = diemtrungbinh;
+    }
+    public void nhap() {
+        Scanner kb = new Scanner(System.in);
+        System.out.print("Nhap ma so: ");
+        maso = kb.nextLine();
+        System.out.print("Nhap ho ten: ");
+        hoten = kb.nextLine();
+        System.out.print("Nhap diem trung binh: ");
+        diemtrungbinh = kb.nextDouble();
+    }
+    public void xuat() {
+        System.out.println("Ma so: " + maso);
+        System.out.println("Ho ten: " + hoten);
+        System.out.println("Diem trung binh: " + diemtrungbinh);
+    }
+}
+public class danhsachhocsinh {
+    private hocsinh[] ds;
+    private int soluong;
+    public danhsachhocsinh(int kichthuoc) {
+        ds = new hocsinh[kichthuoc];
+        soluong = 0;
+    }
+    public void nhapdanhsach() {
+        Scanner kb = new Scanner(System.in);
+        System.out.print("Nhap so luong hoc sinh: ");
+        soluong = kb.nextInt();
+        for (int i = 0; i < soluong; i++) {
+            if (soluong < ds.length) {
+            System.out.println("Nhap hoc sinh thu " + (i + 1) + ": ");
+            ds[soluong] = new hocsinh();
+            soluong++;
+        } else {
+            System.out.println("Danh sach day");
+            break;
+        }
+    }
+}
+public void indanhsach(){
+    for (int i = 0; i < soluong; i++) {
+        ds[i].xuat();
+        System.out.println();
+    }
+}
+public void sapxepgiamdan() {
+    Arrays.sort(danhSach, 0, soLuong, (hs1, hs2) -> Double.compare(hs2.getDiemTrungBinh(), hs1.getDiemTrungBinh()));
+} 
+}
+public class demo1 {
+    public static void main(String[] args) {
+        hocsinh hs1 = new hocsinh();
+        hocsinh hs2 = new hocsinh("164", "Tran Le Phuoc Tai", 8.5);
+        hocsinh hs3 = new hocsinh(hs2);
+        System.out.println("nhap thong tin hs1: ");
+        hs1.nhap();
+        System.out.println("thong tin hs1: ");
+        hs1.xuat();
+        System.out.println("thong tin hs2: ");
+        hs2.xuat();
+        System.out.println("thong tin hs3: ");
+        hs3.xuat();
+        hs1.sethoten("Nguyen Anh Dao");
+        System.out.println("thong tin hs1 sau khi sua: ");
+        hs1.xuat();
+        hocsinh maxdiemtrungbinh = hs1;
+        if (hs2.getdiemtrungbinh() > maxdiemtrungbinh.getdiemtrungbinh()) {
+            maxdiemtrungbinh = hs2;
+        }
+        if (hs3.getdiemtrungbinh() > maxdiemtrungbinh.getdiemtrungbinh()) {
+            maxdiemtrungbinh = hs3;
+        }
+        System.out.println("Hoc sinh co diem trung binh cao nhat: ");
+        maxdiemtrungbinh.xuat();
+    }
+}
+public class demo2 {
+    public static void main(String[] args) {
+        danhsachhocsinh ds = new danhsachhocsinh(10);
+        ds.nhapdanhsach();
+        ds.sapxepgiamdan();
+        ds.indanhsach();
+    }
+}

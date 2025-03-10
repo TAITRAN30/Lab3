@@ -1,0 +1,47 @@
+public class tamgiac {
+    private int a;
+    private int b;
+    private int c;
+    public tamgiac(int a, int b, int c) {
+        this.a = a;
+        this.b = b;
+        this.c = c;
+    }
+    public int chuvi() {
+        return a + b + c;
+    }
+    public double dientich() {
+        double p = chuvi() / 2;
+        return (int) Math.sqrt(p * (p - a) * (p - b) * (p - c));
+    }
+    public string loaitamgiac() {
+        if (a == b && b == c) {
+            return "Tam giac deu";
+        }
+        if (a == b || b == c || c == a) {
+            return "Tam giac can";
+        }else {
+            return "Tam giac thuong";
+        }
+    }
+}
+public class demo {
+    public static void main(String[] args) {
+        tamgiac tg1 = new tamgiac(3, 4, 5);
+        tamgiac tg2 = new tamgiac(7, 7, 9);
+        tamgiac tg3 = new tamgiac(8, 8, 8);
+        System.out.println("tam giac 1: " );
+        System.out.println("Chu vi: " + tg1.chuvi());
+        System.out.println("Dien tich: " + tg1.dientich());
+        System.out.println("Loai tam giac: " + tg1.loaitamgiac());
+        System.out.println("tam giac 2: " );
+        System.out.println("Chu vi: " + tg2.chuvi());
+        System.out.println("Dien tich: " + tg2.dientich());
+        System.out.println("Loai tam giac: " + tg2.loaitamgiac());
+        System.out.println("tam giac 3: " );
+        System.out.println("Chu vi: " + tg3.chuvi());
+        System.out.println("Dien tich: " + tg3.dientich());
+        System.out.println("Loai tam giac: " + tg3.loaitamgiac());
+       
+    }
+}

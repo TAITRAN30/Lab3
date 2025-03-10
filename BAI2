@@ -1,0 +1,87 @@
+public class phanso {
+    private int tu;
+    private int mau;
+    public phanso() {
+        this.tu = 0;
+        this.mau = 1;
+    }
+    public phanso(int tu, int mau) {
+        this.tu = tu;
+        this.mau = mau;
+    }
+    public phanso(phanso ps) {
+        this.tu = ps.tu;
+        this.mau = ps.mau;
+    }
+    public void nhapphanso() {
+        Scanner kb = new Scanner(System.in);
+        System.out.print("Nhap tu so: ");
+        tu = kb.nextInt();
+        System.out.print("Nhap mau so: ");
+        mau = kb.nextInt();
+        if mau == 0 {
+            System.out.println("Mau so phai khac 0");
+            System.out.print("Nhap lai mau so: ");
+            mau = kb.nextInt();
+        }
+    }
+    public void xuatphanso() {
+        System.out.println(tu + "/" + mau);
+    }
+    private int uscln(int a, int b) {
+        a= Math.abs(a);
+        b= Math.abs(b);
+        while (b!=0) {
+            int temp =b;
+            b = a % b;
+            a = temp;
+        } 
+        return a;
+    }
+    private void rutgonphanso() {
+        int i = uscln(tu, mau);
+        tu = tu / i;
+        mau = mau / i;
+    }
+    public phanso cong(phanso ps) {
+        return new phanso(this.tu * ps.mau + ps.tu * this.mau, this.mau * ps.mau);
+    }
+    public phanso tru(phanso ps) {
+        return new phanso(this.tu * ps.mau - ps.tu * this.mau, this.mau * ps.mau);
+    }
+    public phanso nhan(phanso ps) {
+        return new phanso(this.tu * ps.tu, this.mau * ps.mau);
+    }
+    public phanso chia(phanso ps) {
+        return new phanso(this.tu * ps.mau, this.mau * ps.tu);
+    }
+}
+public class main {
+    public static void main(String[] args) {
+        scanner kb = new scanner(System.in);
+        phanso p1 = new phanso();
+        System.out.println("phan so p1 khoi tao mac dinh ");
+        p1.xuatphanso();
+        System.out.println("Nhap phan so p1: ");
+        p1.nhapphanso();
+        System.out.println("phan so p1 sau khi nhap: ");
+        p1.xuatphanso();
+        phanso p2 = new phanso(tu=4, mau=16);
+        System.out.println("phan so p2: ");
+        p2.xuatphanso();
+        phanso p3 = new phanso();
+        System.out.println("Nhap phan so p3: ");
+        p3.nhapphanso();
+        System.out.println("phan so p3: ");
+        p3.xuatphanso();
+        phanso p1p3 = p1.cong(p3);
+        System.out.println("p1 + p3 = ");
+        p1p3.xuatphanso();
+        phanso p4 = new phanso(p1p3);
+        System.out.println("phan so p4 sao chep tu p1p3: ");
+        p4.xuatphanso();
+        phanso p4p2 = p4.nhan(p2);
+        System.out.println("p4 * p2 = ");
+        p4p2.xuatphanso();
+    }
+}
